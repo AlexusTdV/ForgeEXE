@@ -1,0 +1,38 @@
+name: Windows Build (ForgeEXE)
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller PyQt6
+
+      - name: Build EXE
+        run: |
+          mkdir dist
+          pyinstaller --noconfirm --onefile --windowed main.py ^
+            -n ForgeEXE ^
+            --icon icon.ico ^
+            --add-data "icon.ico;."
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ForgeEXE
+          path: dist/ForgeEXE.exe

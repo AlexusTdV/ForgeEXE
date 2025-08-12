@@ -1,6 +1,5 @@
 # ForgeEXE — PyInstaller GUI Builder
 
-[![Build](https://img.shields.io/github/actions/workflow/status/alexustdv/pymaker/build.yml?label=build)](#)
 [![Python](https://img.shields.io/badge/python-3.9%2B-blue)](#)
 [![PyQt6](https://img.shields.io/badge/PyQt-6-41b883)](#)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
